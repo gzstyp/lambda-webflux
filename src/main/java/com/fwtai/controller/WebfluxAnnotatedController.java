@@ -12,7 +12,16 @@ import reactor.core.publisher.Mono;
 
 import java.util.ArrayList;
 
-//基于注解实现 webflux 的方式,已解决IE8请求时出现下载的bug
+/**
+ * 基于注解实现 webflux 的方式,已解决IE8请求时出现下载的bug
+ * @注意 返回值 Mono的个数 0和或1个;而Flux则可以是0个或N个
+ * @作者 田应平
+ * @版本 v1.0
+ * @创建时间 2021/2/7 1:24
+ * @QQ号码 444141300
+ * @Email service@yinlz.com
+ * @官网 <url>http://www.yinlz.com</url>
+*/
 @RestController
 @RequestMapping("/annotated")
 public class WebfluxAnnotatedController{
