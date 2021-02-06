@@ -21,7 +21,7 @@ public class FunctionalInterfaceController{
             @Override
             public Mono<ServerResponse> handle(final ServerRequest request){
                 final String json = ToolClient.json("基于函数接口 FunctionalInterface 实现 webflux 的方式");
-                return ServerResponse.ok().bodyValue(json);
+                return ToolClient.responseJson(json);
             }
         }).build();
     }
