@@ -1,6 +1,11 @@
 package com.fwtai.tool;
 
 import com.alibaba.fastjson.JSONObject;
+import org.springframework.http.MediaType;
+import org.springframework.web.reactive.function.server.ServerResponse;
+import reactor.core.publisher.Mono;
+
+import java.nio.charset.StandardCharsets;
 
 /**
  * 响应客户端
@@ -18,5 +23,9 @@ public final class ToolClient{
         json.put("code",200);
         json.put("data",data);
         return json.toString();
+    }
+
+    public static Mono<ServerResponse> responseJson(final String json){
+         return ServerResponse.ok().contentType(new MediaType("text","html",StandardCharsets.UTF_8)).header("Cache-Control","no-cache").bodyValue(json);
     }
 }
