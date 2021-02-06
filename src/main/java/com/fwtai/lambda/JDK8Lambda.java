@@ -8,7 +8,7 @@ import java.util.function.Supplier;
 import java.util.function.UnaryOperator;
 
 /**
- * 常用的jdk8自带的函数接口
+ * 常用的jdk8自带的函数接口,箭头→的左边的输入(参数),右边是输出(返回值)
  * @作者 田应平
  * @版本 v1.0
  * @创建时间 2021/2/6 11:08
@@ -19,7 +19,7 @@ import java.util.function.UnaryOperator;
 public class JDK8Lambda{
 
     public static void main(String[] args){
-        predicate();//重要!!!这有使用方法
+        fun();
     }
 
     //没有输入仅有输出,和Consumer是相反的
@@ -76,5 +76,12 @@ public class JDK8Lambda{
 
     protected static boolean bl(final Integer params){
         return params > 0;
+    }
+
+    //参数为‘函数接口’,而参数又是'函数接口'，解释:第1个t是第1个Function<T,R>的第1个输入参数T;r是返回值且又是函数接口类型Function<T,R>
+    protected static void fun(){
+        final Function<Integer,Function<Integer,Integer>> fun = t -> r -> t + r;//箭头→的左边的输入(参数),右边是输出(返回值)
+        final Integer result = fun.apply(10).apply(20);
+        System.out.println("result = " + result);// result = 30
     }
 }
