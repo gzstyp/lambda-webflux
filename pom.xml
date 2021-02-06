@@ -14,7 +14,8 @@
 	<description>
         jdk8学习lambda表达式;
         基于注解实现 webflux 的方式;
-        基于函数接口 FunctionalInterface 实现 webflux 的方式,推荐使用!已解决在IE8版本请求时不出现下载的bug
+        基于函数接口 FunctionalInterface 实现 webflux 的方式,已解决在IE8版本请求时不出现下载的bug
+        总结:在接收请求参数时,简单类型用注解方式接口,复杂的可以使用基于函数接口来处理接收操作
     </description>
 	<properties>
 		<java.version>9</java.version>
