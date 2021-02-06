@@ -10,7 +10,9 @@ import org.springframework.web.reactive.function.server.ServerRequest;
 import org.springframework.web.reactive.function.server.ServerResponse;
 import reactor.core.publisher.Mono;
 
-//基于函数接口 FunctionalInterface 实现 webflux 的方式,推荐!!!
+import java.util.Optional;
+
+//基于函数接口 FunctionalInterface 实现 webflux 的方式
 @Component
 public class FunctionalInterfaceController{
 
@@ -20,17 +22,27 @@ public class FunctionalInterfaceController{
         return RouterFunctions.route().GET("/api/object",new HandlerFunction<ServerResponse>(){
             @Override
             public Mono<ServerResponse> handle(final ServerRequest request){
-                final String json = ToolClient.json("基于函数接口 FunctionalInterface 实现 webflux 的方式");
+                final Optional<String> cityParamOptional = request.queryParam("userName");
+                if (!cityParamOptional.isPresent()){
+                    return ServerResponse.status(500).bodyValue("参数有误");
+                }
+                final String userName = cityParamOptional.get();
+                final String json = ToolClient.json("基于函数接口 FunctionalInterface 实现 webflux 的方式,userName->"+userName);
                 return ToolClient.responseJson(json);
             }
         }).build();
     }
 
-    // http://127.0.0.1:701/api/login
+    // http://127.0.0.1:701/api/login?userName=typ
     @Bean
     public RouterFunction<ServerResponse> login(){
         return RouterFunctions.route().GET("/api/login",request -> {
-            final String json = ToolClient.json("login,基于函数接口 FunctionalInterface 实现 webflux 的方式");
+            final Optional<String> cityParamOptional = request.queryParam("userName");
+            if (!cityParamOptional.isPresent()){
+                return ServerResponse.status(500).bodyValue("参数有误");
+            }
+            final String userName = cityParamOptional.get();
+            final String json = ToolClient.json("login,基于函数接口 FunctionalInterface 实现 webflux 的方式,userName->"+userName);
             return ToolClient.responseJson(json);
         }).build();
     }
