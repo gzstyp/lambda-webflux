@@ -28,4 +28,8 @@ public final class ToolClient{
     public static Mono<ServerResponse> responseJson(final String json){
          return ServerResponse.ok().contentType(new MediaType("text","html",StandardCharsets.UTF_8)).header("Cache-Control","no-cache").bodyValue(json);
     }
+
+    protected Mono<ServerResponse> responseJson(final Mono<String> json){
+        return ServerResponse.ok().contentType(new MediaType("text","html",StandardCharsets.UTF_8)).body(json,String.class);
+    }
 }
