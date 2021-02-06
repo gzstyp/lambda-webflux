@@ -9,6 +9,7 @@ import java.util.function.UnaryOperator;
 
 /**
  * 常用的jdk8自带的函数接口,箭头→的左边的输入(参数),右边是输出(返回值)
+ * 高阶函数:即返回函数的函数
  * @作者 田应平
  * @版本 v1.0
  * @创建时间 2021/2/6 11:08
@@ -19,7 +20,7 @@ import java.util.function.UnaryOperator;
 public class JDK8Lambda{
 
     public static void main(String[] args){
-        fun();
+        fun3();
     }
 
     //没有输入仅有输出,和Consumer是相反的
@@ -79,9 +80,29 @@ public class JDK8Lambda{
     }
 
     //级联表达式,参数为‘函数接口’,而参数又是'函数接口'，解释:第1个t是第1个Function<T,R>的第1个输入参数T;r是返回值且又是函数接口类型Function<T,R>
-    protected static void fun(){
+    //柯里化：把多个参数的函数转换为只有一个参数的函数
+    protected static void fun2(){
         final Function<Integer,Function<Integer,Integer>> fun = t -> r -> t + r;//箭头→的左边的输入(参数),右边是输出(返回值)
         final Integer result = fun.apply(10).apply(20);
         System.out.println("result = " + result);// result = 30
+    }
+
+    //级联表达式和柯里化,参数里又是函数接口的参数
+    protected static void fun3(){
+        final Function<Integer,Function<Integer,Function<Integer,Integer>>> fun = x -> y -> z -> x + y + z;
+        final Integer result = fun.apply(10).apply(20).apply(30);
+        System.out.println("result = " + result);// result = 60
+        final int[] arrays = {2,3,4};
+        Function fn = fun;//高阶函数:即返回函数的函数
+        for(int x = 0; x < arrays.length; x++){
+            if(fn instanceof Function){
+                final Object obj = fn.apply(arrays[x]);
+                if(obj instanceof Function){
+                    fn = (Function)obj;
+                }else{
+                    System.out.println("调用结束,其值 obj = " + obj);// 9
+                }
+            }
+        }
     }
 }
