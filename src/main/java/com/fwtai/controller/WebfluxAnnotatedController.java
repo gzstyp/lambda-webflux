@@ -9,7 +9,7 @@ import reactor.core.publisher.Mono;
 
 import java.util.ArrayList;
 
-//基于注解实现 webflux 的方式,推荐!!!
+//基于注解实现 webflux 的方式
 @RestController
 @RequestMapping("/annotated")
 public class WebfluxAnnotatedController{
