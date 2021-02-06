@@ -12,7 +12,10 @@ import reactor.core.publisher.Mono;
 
 import java.util.Optional;
 
-//基于函数接口 FunctionalInterface 实现 webflux 的方式
+import static org.springframework.web.reactive.function.server.RequestPredicates.GET;
+import static org.springframework.web.reactive.function.server.RouterFunctions.route;
+
+//基于函数接口 FunctionalInterface 实现 webflux 的方式,推荐!!!
 @Component
 public class FunctionalInterfaceController{
 
@@ -59,5 +62,23 @@ public class FunctionalInterfaceController{
     @Bean
     public RouterFunction<ServerResponse> register(){
         return RouterFunctions.route().GET("/api/register",request -> ToolClient.responseJson(ToolClient.json("register,基于函数接口 FunctionalInterface 实现 webflux 的方式"))).build();
+    }
+
+    // 多路由分发 http://127.0.0.1:701/multiple/login?userName=typ http://127.0.0.1:701/multiple/logout
+    @Bean
+    public RouterFunction<ServerResponse> multipleRouter(){
+        // 即用什么方法去处理它!!!可以参考本项目目录下的 项目 webflux
+        return route(GET("/multiple/login"),request -> {
+            final Optional<String> userNameOptional = request.queryParam("userName");
+            if(!userNameOptional.isPresent()){
+                return ToolClient.responseJson(ToolClient.json("请求参数有误,多路由分发,基于函数接口 FunctionalInterface 实现 webflux 的方式"));
+            }
+            final String userName = userNameOptional.get();
+            return ToolClient.responseJson(ToolClient.json("login,多路由分发,基于函数接口 FunctionalInterface 实现 webflux 的方式,userName->"+userName));
+        })
+        // 即用什么方法去处理它!!!可以参考本项目目录下的 项目 webflux
+        .andRoute(GET("/multiple/logout"),request -> {
+            return ToolClient.responseJson(ToolClient.json("logout,多路由分发,基于函数接口 FunctionalInterface 实现 webflux 的方式"));
+        });
     }
 }
