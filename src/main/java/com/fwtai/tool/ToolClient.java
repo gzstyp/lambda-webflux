@@ -6,6 +6,8 @@ import org.springframework.web.reactive.function.server.ServerResponse;
 import reactor.core.publisher.Mono;
 
 import java.nio.charset.StandardCharsets;
+import java.util.List;
+import java.util.Map;
 
 /**
  * 响应客户端
@@ -18,18 +20,255 @@ import java.nio.charset.StandardCharsets;
  */
 public final class ToolClient{
 
-    public static String json(final String data){
-        final JSONObject json = new JSONObject();
-        json.put("code",200);
-        json.put("data",data);
-        return json.toString();
+    private final static String KEY_CODE = "code";
+    private final static String KEY_MSG ="msg";
+    private final static String KEY_DATA = "data";
+    private final static String KEY_RECORD = "record";
+
+    public static String json199(){
+        final JSONObject json = new JSONObject(2);
+        json.put(KEY_CODE,199);
+        json.put(KEY_MSG,"操作失败");
+        return json.toJSONString();
     }
 
+    public static String json199(final String msg){
+        final JSONObject json = new JSONObject(2);
+        json.put(KEY_CODE,199);
+        json.put(msg,msg);
+        return json.toJSONString();
+    }
+
+    public static String json200(){
+        final JSONObject json = new JSONObject(2);
+        json.put(KEY_CODE,200);
+        json.put(KEY_MSG,"操作成功");
+        return json.toJSONString();
+    }
+
+    public static String json200(final String msg){
+        final JSONObject json = new JSONObject(2);
+        json.put(KEY_CODE,200);
+        json.put(KEY_MSG,msg);
+        return json.toJSONString();
+    }
+
+    public static String json201(){
+        final JSONObject json = new JSONObject(2);
+        json.put(KEY_CODE,201);
+        json.put(KEY_MSG,"暂无数据");
+        return json.toJSONString();
+    }
+
+    public static String json201(final String msg){
+        final JSONObject json = new JSONObject(2);
+        json.put(KEY_CODE,201);
+        json.put(msg,msg);
+        return json.toJSONString();
+    }
+
+    public static String json202(){
+        final JSONObject json = new JSONObject(2);
+        json.put(KEY_CODE,202);
+        json.put(KEY_MSG,"请求参数不完整");
+        return json.toJSONString();
+    }
+
+    public static String json202(final String msg){
+        final JSONObject json = new JSONObject(2);
+        json.put(KEY_CODE,202);
+        json.put(msg,msg);
+        return json.toJSONString();
+    }
+
+    public static String json204(){
+        final JSONObject json = new JSONObject(2);
+        json.put(KEY_CODE,204);
+        json.put(KEY_MSG,"系统出现错误");
+        return json.toJSONString();
+    }
+
+    public static String json204(final String msg){
+        final JSONObject json = new JSONObject(2);
+        json.put(KEY_CODE,204);
+        json.put(msg,msg);
+        return json.toJSONString();
+    }
+
+    public static String json205(){
+        final JSONObject json = new JSONObject(2);
+        json.put(KEY_CODE,205);
+        json.put(KEY_MSG,"未登录或登录超时");
+        return json.toJSONString();
+    }
+
+    public static String json205(final String msg){
+        final JSONObject json = new JSONObject(2);
+        json.put(KEY_CODE,205);
+        json.put(msg,msg);
+        return json.toJSONString();
+    }
+
+    public static String json401(){
+        final JSONObject json = new JSONObject(2);
+        json.put(KEY_CODE,401);
+        json.put(KEY_MSG,"没有操作权限");
+        return json.toJSONString();
+    }
+
+    public static String json401(final String msg){
+        final JSONObject json = new JSONObject(2);
+        json.put(KEY_CODE,401);
+        json.put(msg,msg);
+        return json.toJSONString();
+    }
+
+    public static String executeRows(final int rows){
+        final JSONObject json = new JSONObject(3);
+        if(rows > 0){
+            json.put(KEY_CODE,200);
+            json.put(KEY_MSG,"操作成功");
+            json.put(KEY_DATA,rows);
+            return json.toJSONString();
+        }else{
+            json.put(KEY_CODE,199);
+            json.put(KEY_MSG,"操作失败");
+            return json.toJSONString();
+        }
+    }
+
+    public static String executeRows(final int rows,final String success){
+        final JSONObject json = new JSONObject(3);
+        if(rows > 0){
+            json.put(KEY_CODE,200);
+            json.put(KEY_MSG,success);
+            json.put(KEY_DATA,rows);
+            return json.toJSONString();
+        }else{
+            json.put(KEY_CODE,199);
+            json.put(KEY_MSG,"操作失败");
+            return json.toJSONString();
+        }
+    }
+
+    public static String executeRows(final int rows,final String success,final String failure){
+        final JSONObject json = new JSONObject(3);
+        if(rows > 0){
+            json.put(KEY_CODE,200);
+            json.put(KEY_MSG,success);
+            json.put(KEY_DATA,rows);
+            return json.toJSONString();
+        }else{
+            json.put(KEY_CODE,199);
+            json.put(KEY_MSG,failure);
+            return json.toJSONString();
+        }
+    }
+
+    public static String queryJson(final Object object){
+        if(object == null || object.toString().trim().length() <= 0){
+            return json201();
+        }
+        final JSONObject json = new JSONObject(3);
+        if (object instanceof Exception) {
+            json.put(KEY_CODE,204);
+            json.put(KEY_MSG,"系统出现错误");
+            json.put(KEY_DATA,object);
+            return json.toJSONString();
+        }
+        if(object instanceof Map<?,?>){
+            final Map<?,?> map = (Map<?,?>) object;
+            if(map.size() <= 0){
+                json201();
+            }else {
+                json.put(KEY_CODE,200);
+                json.put(KEY_MSG,"操作成功");
+                json.put(KEY_DATA,object);
+                return json.toJSONString();
+            }
+        }
+        if(object instanceof List<?>){
+            final List<?> list = (List<?>) object;
+            if(list.size() <= 0){
+                return json201();
+            }else {
+                if (list.get(0) == null){
+                    return json201();
+                }else {
+                    json.put(KEY_CODE,200);
+                    json.put(KEY_MSG,"操作成功");
+                    json.put(KEY_DATA,object);
+                    json.put(KEY_RECORD,((List<?>) object).size());
+                    final String jsonObj = json.toJSONString();
+                    final JSONObject j = JSONObject.parseObject(jsonObj);
+                    final String listData = j.getString(KEY_DATA);
+                    if (listData.equals("[{}]")){
+                        return json201();
+                    }
+                    return jsonObj;
+                }
+            }
+        }
+        if(String.valueOf(object).toLowerCase().equals("null") || String.valueOf(object).replaceAll("\\s*", "").length() == 0){
+            return json201();
+        }else {
+            json.put(KEY_CODE,200);
+            json.put(KEY_MSG,"操作成功");
+            json.put(KEY_DATA,object);
+            final String jsonObj = json.toJSONString();
+            final JSONObject j = JSONObject.parseObject(jsonObj);
+            final String obj = j.getString(KEY_DATA);
+            if (obj.equals("{}")){
+                return json201();
+            }
+            return jsonObj;
+        }
+    }
+
+    /**
+     * 基于函数接口调用
+     * @param json 是json格式字符串
+     * @作者 田应平
+     * @QQ 444141300
+     * @创建时间 2021/2/7 17:33
+    */
     public static Mono<ServerResponse> responseJson(final String json){
          return ServerResponse.ok().contentType(new MediaType("text","html",StandardCharsets.UTF_8)).header("Cache-Control","no-cache").bodyValue(json);
     }
 
-    protected Mono<ServerResponse> responseJson(final Mono<String> json){
+    /**
+     * 不推荐使用
+     * @param json 是经过 Mono.just(json) 处理后的字符串
+     * @作者 田应平
+     * @QQ 444141300
+     * @创建时间 2021/2/7 17:34
+    */
+    protected static Mono<ServerResponse> responseJson(final Mono<String> json){
         return ServerResponse.ok().contentType(new MediaType("text","html",StandardCharsets.UTF_8)).body(json,String.class);
+    }
+
+    /**
+     * 基于注解且仅在在controller层调用
+     * @param msg 是字符串
+     * @作者 田应平
+     * @QQ 444141300
+     * @创建时间 2021/2/7 17:29
+    */
+    public static Mono<String> responseAnnotatedMsg(final String msg){
+        if(msg == null || msg.isEmpty()){
+            return Mono.just(json201());
+        }
+        return Mono.just(json200(msg));
+    }
+
+    /**
+     * 基于注解且仅在在controller层调用
+     * @param json 是json格式的字符串
+     * @作者 田应平
+     * @QQ 444141300
+     * @创建时间 2021/2/7 17:30
+    */
+    public static Mono<String> responseAnnotatedJson(final String json){
+        return Mono.just(json);
     }
 }
