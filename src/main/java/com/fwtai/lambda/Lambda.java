@@ -45,7 +45,7 @@ public class Lambda{
                 return Integer.compare(o1,o2);
             }
         };
-        TreeSet<Integer> ts = new TreeSet<Integer>(comparator);
+        final TreeSet<Integer> ts = new TreeSet<Integer>(comparator);
         System.out.println(ts);
     }
 
