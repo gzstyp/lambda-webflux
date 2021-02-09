@@ -40,7 +40,7 @@ public class WebfluxAnnotatedController{
 
     // 获取请求头,http://127.0.0.1:701/annotated/list 一切转为json字符串再返回响应客户端,不推荐使用这种
     @GetMapping(value = "/list",produces = MediaType.TEXT_HTML_VALUE)//解决IE8请求时出现下载的bug
-    public Flux<String> list(@RequestHeader(name = "token",required = false) String header){
+    public Flux<String> list(@RequestHeader(name = "accessToken",required = false) String header){
         final ArrayList<String> list = new ArrayList<>();
         list.add("object");
         list.add(",基于注解实现 webflux 的方式,header->"+header);
@@ -49,7 +49,7 @@ public class WebfluxAnnotatedController{
 
     // http://127.0.0.1:701/annotated/jsonList 一切转为json字符串再返回响应客户端,推荐使用这种
     @GetMapping(value = "/jsonList",produces = MediaType.TEXT_HTML_VALUE)//解决IE8请求时出现下载的bug
-    public Mono<String> jsonList(@RequestHeader(name = "token",required = false) String header){
+    public Mono<String> jsonList(@RequestHeader(name = "accessToken",required = false) String header){
         final ArrayList<String> list = new ArrayList<>();
         list.add("object");
         list.add("基于注解实现 webflux 的方式,header->"+header);
@@ -59,7 +59,7 @@ public class WebfluxAnnotatedController{
 
     // http://127.0.0.1:701/annotated/listMap 一切转为json字符串再返回响应客户端,推荐使用这种
     @GetMapping(value = "/listMap",produces = MediaType.TEXT_HTML_VALUE)//解决IE8请求时出现下载的bug
-    public Mono<String> listMap(@RequestHeader(name = "token",required = false) String header){
+    public Mono<String> listMap(@RequestHeader(name = "accessToken",required = false) String header){
         final ArrayList<HashMap<String,String>> list = new ArrayList<>();
         final HashMap<String,String> map = new HashMap<>();
         map.put("kid","19850117");
@@ -72,7 +72,7 @@ public class WebfluxAnnotatedController{
 
     // http://127.0.0.1:701/annotated/map 一切转为json字符串再返回响应客户端,推荐使用这种
     @GetMapping(value = "/map",produces = MediaType.TEXT_HTML_VALUE)//解决IE8请求时出现下载的bug
-    public Mono<String> map(@RequestHeader(name = "token",required = false) String header){
+    public Mono<String> map(@RequestHeader(name = "accessToken",required = false) String header){
         final HashMap<String,String> map = new HashMap<>();
         map.put("kid","19850117");
         map.put("addr","基于注解实现 webflux 的方式,header->");
