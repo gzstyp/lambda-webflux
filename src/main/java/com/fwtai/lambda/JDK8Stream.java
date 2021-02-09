@@ -74,11 +74,11 @@ public class JDK8Stream{
     protected static void handle(){
         final String[] arrs = {"react","","react","vue","ba_el","mysql","ba_el"};
         Arrays.stream(arrs)
-            .filter((params) -> !params.isEmpty())//过滤空字符串,此处的参数断言类型的函数接口
+            .filter((params) -> !params.isEmpty())//过滤空字符串,是true才返回,此处的参数断言类型的函数接口,参数类型(函数接口)：Stream<T> filter(Predicate<? super T> predicate);
             .distinct()//去除重复元素
             .sorted()//排序
             .limit(1)//获取第1个
-            .map((t)->t.replace("_",""))//替换下划线 _
+            .map((t)->t.replace("_",""))//替换下划线 _ ,参数类型(函数接口)：<R> Stream<R> map(Function<? super T, ? extends R> mapper);
             .flatMap(params->Stream.of(params.split("")))//通过拆分，组成新的 Stream
             .sorted()//再次排序
             .forEach((t)->System.out.println(t));
