@@ -105,4 +105,38 @@ public class JDK8Lambda{
             }
         }
     }
+
+    //lambda示例代码,实战
+    /*
+     protected static void start(){
+        final ConfigStoreOptions config = new ConfigStoreOptions()
+          .setType("file")
+          .setFormat("json")
+          .setConfig(new JsonObject().put("path","config.json"));//当然也可以再创建一个
+        final ConfigRetrieverOptions opts = new ConfigRetrieverOptions()
+          .addStore(config);//当然可以根据上面再创建多个可以添加多个
+        final ConfigRetriever cfgRetrieve = ConfigRetriever.create(vertx,opts);
+
+        //方式1,参数类型:void getConfig(Handler<AsyncResult<JsonObject>> completionHandler);//都是函数接口类型,ok
+            cfgRetrieve.getConfig(asyncResult ->{
+            this.configHandle(start,router,asyncResult);
+        });
+
+        //方式2,参数类型:void getConfig(Handler<AsyncResult<JsonObject>> completionHandler);//都是函数接口类型,ok
+        final Handler<AsyncResult<JsonObject>> handler = asyncResult -> configHandle(start,router,asyncResult);
+        cfgRetrieve.getConfig(handler);
+     }
+
+     protected void configHandle(final Promise<Void> start,final Router router,final AsyncResult<JsonObject> asyncResult){
+        if(asyncResult.succeeded()){
+          final JsonObject jsonObject = asyncResult.result();//请注意json文件格式数据,{"http":{"port":803}}
+          final JsonObject http = jsonObject.getJsonObject("http");// {"port":803}
+          final Integer httpPort = http.getInteger("port",801);
+          vertx.createHttpServer().requestHandler(router).listen(httpPort);
+          start.complete();
+        }else{
+          start.fail("应用启动失败");
+        }
+      }
+    */
 }
