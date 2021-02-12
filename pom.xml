@@ -17,6 +17,7 @@
         基于函数接口 FunctionalInterface 实现 webflux 的方式;
         不管基于‘基于注解实现’或‘基于函数接口’都已解决在IE8版本请求时不出现下载的bug;
         总结:在接收请求参数时,简单类型用注解方式接口,复杂的可以使用基于函数接口来处理接收操作;
+        一般情况下,若有2个参数时是既有输入参数又有返回结果，即输入是T，返回的是R,Function《T,R》
     </description>
 	<properties>
 		<java.version>9</java.version>
