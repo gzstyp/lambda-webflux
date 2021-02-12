@@ -45,7 +45,7 @@ public class JDK8Lambda{
         consumer.accept("我是仅有输入没有输出,和Supplier是相反的,和consumer1写法不一样");
     }
 
-    //既有输入参数又有返回结果，输入是T，返回的是R
+    //既有输入参数又有返回结果，输入是T，返回的是R,若有2个参数时是既有输入参数又有返回结果，即输入是T，返回的是R,Function<T,R>
     protected static void function(){
         final Function<String,String> function1 = (result)-> result;
         final String r = function1.apply("既有输入参数又有返回结果，输入是T，返回的是R");//传入参数,r接收的是返回值
