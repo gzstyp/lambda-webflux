@@ -256,9 +256,9 @@ public final class ToolClient{
     */
     public static Mono<String> responseAnnotatedMsg(final String msg){
         if(msg == null || msg.isEmpty()){
-            return Mono.just(json201());
+            return Mono.justOrEmpty(json201());
         }
-        return Mono.just(json200(msg));
+        return Mono.justOrEmpty(json200(msg));
     }
 
     /**
@@ -269,6 +269,6 @@ public final class ToolClient{
      * @创建时间 2021/2/7 17:30
     */
     public static Mono<String> responseAnnotatedJson(final String json){
-        return Mono.just(json);
+        return Mono.justOrEmpty(json);
     }
 }
