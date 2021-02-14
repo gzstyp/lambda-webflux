@@ -37,13 +37,13 @@ public class JDK8Stream{
         arrays.forEach(t->System.out.println(t));//参数没有括号
     }
 
-    //3.通过List创建 Stream.of
+    //3.通过Stream.of创建 
     protected static void byStreamOf(){
         final Stream<String> arrays = Stream.of(arr);
         arrays.forEach((t)->System.out.println(t));//参数没有括号
     }
 
-    //4.通过迭代器来 创建,需求是 打印1到10的数字
+    //4.通过迭代器来创建,需求是 打印1到10的数字
     protected static void byIterate(){
         final Stream<Integer> stream = Stream.iterate(1,(t) -> t + 1).limit(10);
         stream.forEach((t)->System.out.println(t));
