@@ -118,13 +118,13 @@ public class JDK8Lambda{
           .addStore(config);//当然可以根据上面再创建多个可以添加多个
         final ConfigRetriever cfgRetrieve = ConfigRetriever.create(vertx,opts);
 
-        //方式1,参数类型:void getConfig(Handler<AsyncResult<JsonObject>> completionHandler);//都是函数接口类型,ok
+        //方式1,参数类型:void getConfig(Handler<AsyncResult<JsonObject>> completionHandler);//都是函数接口类型,仅有输入参数无返回输出,ok
             cfgRetrieve.getConfig(asyncResult ->{
             this.configHandle(start,router,asyncResult);
         });
 
-        //方式2,参数类型:void getConfig(Handler<AsyncResult<JsonObject>> completionHandler);//都是函数接口类型,ok
         final Handler<AsyncResult<JsonObject>> handler = asyncResult -> configHandle(start,router,asyncResult);
+        //方式2,参数类型:void getConfig(Handler<AsyncResult<JsonObject>> completionHandler);//都是函数接口类型,仅有输入参数无返回输出,ok
         cfgRetrieve.getConfig(handler);
      }
 
