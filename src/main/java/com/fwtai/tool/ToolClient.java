@@ -233,7 +233,7 @@ public final class ToolClient{
      * @创建时间 2021/2/7 17:33
     */
     public static Mono<ServerResponse> responseJson(final String json){
-         return ServerResponse.ok().contentType(new MediaType("text","html",StandardCharsets.UTF_8)).header("Cache-Control","no-cache").bodyValue(json);
+        return ServerResponse.ok().contentType(new MediaType("text","html",StandardCharsets.UTF_8)).header("Cache-Control","no-cache").bodyValue(json);
     }
 
     /**
