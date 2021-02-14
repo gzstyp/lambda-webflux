@@ -37,7 +37,7 @@ public class JDK8Stream{
         arrays.forEach(t->System.out.println(t));//参数没有括号
     }
 
-    //3.通过Stream.of创建 
+    //3.通过Stream.of创建
     protected static void byStreamOf(){
         final Stream<String> arrays = Stream.of(arr);
         arrays.forEach((t)->System.out.println(t));//参数没有括号
