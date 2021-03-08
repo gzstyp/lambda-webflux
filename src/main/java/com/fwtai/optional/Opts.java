@@ -49,7 +49,7 @@ public final class Opts{
         // 1、map转换方法
         final User user = new User(99,null);//参数为 java 试试
         // user = null ;
-        final String name = Optional.ofNullable(user).map(u -> u.getName()).orElse("MySQL");
+        final String name = Optional.ofNullable(user).map(u -> u.getName()).orElse("MySQL");//todo
         System.out.println(name);
         // 2、过滤方法
         final Optional<User> optUser = Optional.ofNullable(user).filter(u -> u.getName() != null && u.getName().contains("Oracle"));
