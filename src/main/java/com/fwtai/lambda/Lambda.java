@@ -31,7 +31,7 @@ import java.util.stream.Collectors;
  * @Email service@dwlai.com
  * @官网 http://www.fwtai.com
 */
-public class Lambda{
+public final class Lambda{
 
     public static void main(String[] args){
         funTest();

@@ -18,7 +18,7 @@ import java.util.function.UnaryOperator;
  * @Email service@yinlz.com
  * @官网 <url>http://www.yinlz.com</url>
 */
-public class JDK8Lambda{
+public final class JDK8Lambda{
 
     public static void main(String[] args){
         fun3();

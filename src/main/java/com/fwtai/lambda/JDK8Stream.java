@@ -17,7 +17,7 @@ import java.util.stream.Stream;
  * @Email service@dwlai.com
  * @官网 http://www.fwtai.com
  */
-public class JDK8Stream{
+public final class JDK8Stream{
 
     public static void main(final String[] args){
         handle();
