@@ -13,8 +13,10 @@ import java.util.Optional;
 */
 public final class Opts{
 
-    public static void main(String[] args){
-        optionalLambda();
+    public static void main(final String[] args){
+        final String value = null;
+        final boolean bl = Optional.ofNullable(value).map(v -> false).orElse(true);
+        System.out.println(bl);
     }
 
     public static void normal(){
