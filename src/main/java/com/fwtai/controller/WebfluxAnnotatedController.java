@@ -1,7 +1,9 @@
 package com.fwtai.controller;
 
 import com.fwtai.tool.ToolClient;
+import org.springframework.core.io.buffer.DataBuffer;
 import org.springframework.http.MediaType;
+import org.springframework.http.server.reactive.ServerHttpResponse;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestHeader;
@@ -28,9 +30,18 @@ import java.util.HashMap;
 public class WebfluxAnnotatedController{
 
     // 获取请求参数,仅能接收简单的类型???复杂类型用'函数接口'来处理? http://127.0.0.1:701/annotated/get/10
-    @GetMapping(value = "/get/{id}",produces = MediaType.TEXT_HTML_VALUE)//解决IE8请求时出现下载的bug
+    @GetMapping(value = "/get/{id}",produces = MediaType.TEXT_HTML_VALUE)//todo 解决IE8请求时出现下载的bug
     public Mono<String> getRest(@PathVariable final String id){//可以指定name @PathVariable(name = "id") final String id
         return ToolClient.responseAnnotatedMsg("基于注解实现Webflux,id="+id);
+    }
+
+    // http://127.0.0.1:701/annotated/listjson
+    @GetMapping(value = "/listjson")
+    public Mono<Void> list1(final ServerHttpResponse response){
+        response.getHeaders().add("Content-Type","text/html;charset=utf-8");//todo 解决IE8请求时出现下载的bug,推荐使用
+        final String msg = "{\"code\":401,\"msg\":\"没有操作权限\"}";
+        final DataBuffer db = response.bufferFactory().wrap(msg.getBytes());
+        return response.writeWith(Mono.just(db));
     }
 
     @GetMapping(value = "/get",produces = MediaType.TEXT_HTML_VALUE)//解决IE8请求时出现下载的bug,推荐使用这种
