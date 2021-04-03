@@ -35,11 +35,18 @@ public class WebfluxAnnotatedController{
         return ToolClient.responseAnnotatedMsg("基于注解实现Webflux,id="+id);
     }
 
+    // http://127.0.0.1:701/annotated/json
+    @GetMapping(value = "/json")
+    public Mono<Void> json(final ServerHttpResponse response){//todo 解决IE8请求时出现下载的bug,推荐使用
+        final String json = "{\"code\":200,\"msg\":\"操作成功\"}";
+        return ToolClient.responseAnnotatedJson(json,response);
+    }
+
     // http://127.0.0.1:701/annotated/listjson
     @GetMapping(value = "/listjson")
     public Mono<Void> list1(final ServerHttpResponse response){
         response.getHeaders().add("Content-Type","text/html;charset=utf-8");//todo 解决IE8请求时出现下载的bug,推荐使用
-        final String msg = "{\"code\":401,\"msg\":\"没有操作权限\"}";
+        final String msg = "{\"code\":200,\"msg\":\"操作成功\"}";
         final DataBuffer db = response.bufferFactory().wrap(msg.getBytes());
         return response.writeWith(Mono.just(db));
     }
