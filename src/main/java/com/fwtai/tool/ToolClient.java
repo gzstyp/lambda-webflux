@@ -111,18 +111,19 @@ public final class ToolClient{
         return json.toJSONString();
     }
 
-    public static String json401(){
+    protected static String createJson(final int code,final String msg){
         final JSONObject json = new JSONObject(2);
-        json.put(KEY_CODE,401);
-        json.put(KEY_MSG,"没有操作权限");
+        json.put(KEY_CODE,code);
+        json.put(KEY_MSG,msg);
         return json.toJSONString();
     }
 
+    public static String json401(){
+        return createJson(401,"没有操作权限");
+    }
+
     public static String json401(final String msg){
-        final JSONObject json = new JSONObject(2);
-        json.put(KEY_CODE,401);
-        json.put(msg,msg);
-        return json.toJSONString();
+        return createJson(401,msg);
     }
 
     public static String executeRows(final int rows){

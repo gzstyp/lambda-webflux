@@ -39,7 +39,7 @@ public final class Opts{
         User createUser = Optional.ofNullable(user1).orElse(createUser());
         System.out.println(createUser.getName());
         User user2 = null ;
-        Optional.ofNullable(user2).orElseThrow(()-> new RuntimeException());//模拟空指针异常
+        Optional.ofNullable(user2).orElseThrow(()-> new RuntimeException("系统出现错误"));//模拟空指针异常
     }
 
     private static User createUser(){
