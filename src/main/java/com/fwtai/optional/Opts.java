@@ -21,10 +21,8 @@ public final class Opts{
 
     public static void normal(){
         final User user = new User(1,"田卓智");
-        if(user != null){
-            if(user.getName() != null){
-                System.out.println(user.getName());
-            }
+        if(user.getName() != null){
+            System.out.println(user.getName());
         }
     }
 

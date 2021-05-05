@@ -21,7 +21,7 @@ public final class Example{
 
     public static void main(String[] args){
         //常规的写法
-        Persion jerry = new Persion(){
+        final Persion jerry = new Persion(){
             @Override
             public void say(){
                 System.out.println("常规的写法");
@@ -29,12 +29,12 @@ public final class Example{
         };
 
         //lambda的写法1
-        Persion tom = ()->{
+        final Persion tom = ()->{
             System.out.println("lambda的写法1");
         };
 
         //lambda的写法2,当且仅当只有一行方法体时可以省略{}
-        Persion mary = () -> System.out.println("lambda的写法2");
+        final Persion mary = () -> System.out.println("lambda的写法2");
 
         jerry.say();
 
