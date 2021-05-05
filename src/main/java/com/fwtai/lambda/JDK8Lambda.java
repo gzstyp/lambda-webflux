@@ -71,12 +71,12 @@ public final class JDK8Lambda{
 
     //这个是重点,含使用方法!!!!
     protected static void predicate(){
-        final Predicate<Integer> predicate = (params) -> bl(params);//可以写成 final Predicate<Integer> predicate = JDK8::bl;
+        final Predicate<Integer> predicate = (params) -> check(params);//可以写成 final Predicate<Integer> predicate = JDK8Lambda::check;这种写法仅支持一个参数
         final boolean b = predicate.test(1);
         System.out.println("b = " + b);
     }
 
-    protected static boolean bl(final Integer params){
+    protected static boolean check(final Integer params){
         return params > 0;
     }
 
