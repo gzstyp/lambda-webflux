@@ -19,7 +19,7 @@ import java.util.Map;
  * @QQ号码 444141300
  * @Email service@dwlai.com
  * @官网 http://www.fwtai.com
- */
+*/
 public final class ToolClient{
 
     private final static String KEY_CODE = "code";
