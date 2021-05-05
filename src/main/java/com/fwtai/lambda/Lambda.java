@@ -169,7 +169,7 @@ public final class Lambda{
 
     //语法格式3:若只有一个参数1且无返回值,那小括号可以省略
     private static void paramKuohao(){
-        final Consumer<String> consumer = param -> System.out.println(param);
+        final Consumer<String> consumer = (param) -> System.out.println(param);
         //调用?
         consumer.accept("若只有一个参数1且无返回值,那小括号可以省略!!!");
     }
