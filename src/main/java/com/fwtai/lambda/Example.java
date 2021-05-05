@@ -28,7 +28,7 @@ public final class Example{
             }
         };
 
-        //lambda的写法1
+        //lambda的写法1,lambda是匿名函数的变体???
         final Persion tom = ()->{
             System.out.println("lambda的写法1");
         };

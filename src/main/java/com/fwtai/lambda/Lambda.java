@@ -9,7 +9,7 @@ import java.util.function.Consumer;
 import java.util.stream.Collectors;
 
 /**
- * Lambda 表达式测试,Stream是元素的集合的操作
+ * Lambda 表达式测试,Stream是元素的集合的操作;lambda是匿名函数的变体???
  * 总结:
  *     语法格式1:无参数无返回值
  *     语法格式2:有一个参数1且无返回值
