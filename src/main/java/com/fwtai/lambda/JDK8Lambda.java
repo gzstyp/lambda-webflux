@@ -20,7 +20,7 @@ import java.util.function.UnaryOperator;
 */
 public final class JDK8Lambda{
 
-    public static void main(String[] args){
+    public static void main(final String[] args){
         fun3();
     }
 
@@ -50,6 +50,7 @@ public final class JDK8Lambda{
         final Function<String,String> function1 = (result)-> result;
         final String r = function1.apply("既有输入参数又有返回结果，输入是T，返回的是R");//传入参数,r接收的是返回值
         final Function<Integer,Integer> function2 = (result)-> result * result;
+        final Function<Integer,Integer> function = (result)-> {return result * result;};//todo 也是ok
         System.out.println("function1 = " + r);
         final Integer apply = function2.apply(9);
         System.out.println("既有输入参数又有返回结果，输入是T，返回的是 apply,function2 = " + apply);
