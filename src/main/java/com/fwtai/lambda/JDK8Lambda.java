@@ -84,7 +84,7 @@ public final class JDK8Lambda{
     //级联表达式,参数为‘函数接口’,而参数又是'函数接口'，解释:第1个t是第1个Function<T,R>的第1个输入参数T;r是返回值且又是函数接口类型Function<T,R>
     //柯里化：把多个参数的函数转换为只有一个参数的函数
     protected static void fun2(){
-        final Function<Integer,Function<Integer,Integer>> fun = t -> r -> t + r;//箭头→的左边的输入(参数),右边是输出(返回值)
+        final Function<Integer,Function<Integer,Integer>> fun = (t) -> (r) -> t + r;//todo 箭头→的左边的输入(参数),右边是输出(返回值)
         final Integer result = fun.apply(10).apply(20);
         System.out.println("result = " + result);// result = 30
     }
