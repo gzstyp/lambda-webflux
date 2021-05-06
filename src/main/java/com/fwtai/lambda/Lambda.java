@@ -130,7 +130,7 @@ public final class Lambda{
 
     public void lambdaThis(){
         //转全小写
-        final List<String> list = Arrays.asList(new String[]{"Ni","Hao","Lambda"});
+        final List<String> list = Arrays.asList("Ni","Hao","Lambda");
         List<String> execStrs = list.stream().map(str -> {
             System.out.println(this.getClass().getName());
             return str.toLowerCase();
