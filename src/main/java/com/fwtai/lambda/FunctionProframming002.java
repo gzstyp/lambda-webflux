@@ -1,5 +1,5 @@
 package com.fwtai.lambda;
-
+//todo 带类型的接口函数或Stream
 import java.util.function.IntConsumer;
 import java.util.function.IntPredicate;
 import java.util.stream.IntStream;
@@ -14,12 +14,12 @@ import java.util.stream.IntStream;
 public class FunctionProframming002{
 
     public static void main(final String[] args){
-        //todo 带类型的断言或Stream
+        //todo 带类型的接口函数或Stream
         final IntPredicate predicate = (i -> i > 0);
         final boolean b = predicate.test(2);
         System.out.println(b);
 
-        //todo 带类型的断言或Stream
+        //todo 带类型的接口函数或Stream
         final IntConsumer consumer = (i) -> System.out.println(i);
         consumer.accept(5);
 
