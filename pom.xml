@@ -22,6 +22,7 @@
         JDK8Lambda::check;这种写法仅支持一个参数;
 
         函数式编程就像使用Excel表格计算最大值、最小值、总和一样的道理,我们不关心是怎么实现的，我们仅想要什么样的结果即可!
+        注意命令式编程和函数式编程,jdk1.8之前的都是命令式编程;jdk1.8才有函数式编程
     </description>
 	<properties>
 		<java.version>1.8</java.version>

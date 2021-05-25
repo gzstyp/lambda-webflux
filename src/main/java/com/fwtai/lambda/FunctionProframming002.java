@@ -16,7 +16,7 @@ public class FunctionProframming002{
         final IntStream stream = IntStream.of(nums).parallel();// 方法parallel()并行,多核CPU的优势了
         //long count = stream.count();//todo 仅能调用一次,否则报错 stream has already been operated upon or closed
         //int max = stream.max().getAsInt();
-        int min = stream.min().getAsInt();
+        //int min = stream.min().getAsInt();
         int sum = stream.sum();
 
         //System.out.println("count->"+count);//6
