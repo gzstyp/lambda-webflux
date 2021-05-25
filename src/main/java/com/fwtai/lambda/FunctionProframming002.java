@@ -12,6 +12,10 @@ import java.util.stream.IntStream;
 public class FunctionProframming002{
 
     public static void main(final String[] args){
+
+    }
+
+    protected static void excel(){
         final int[] nums = {10,58,26,-21,22,100};
         final IntStream stream = IntStream.of(nums).parallel();// 方法parallel()并行,多核CPU的优势了
         //long count = stream.count();//todo 仅能调用一次,否则报错 stream has already been operated upon or closed
