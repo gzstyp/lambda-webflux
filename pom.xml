@@ -19,7 +19,9 @@
         一般情况下,若有2个参数时是既有输入参数又有返回结果，即输入是T，返回的是R,Function《T,R》
         总结:在接收请求参数时,简单类型用注解方式接口,复杂的可以使用基于函数接口来处理接收操作;
         《SpringBoot 5.0-WebFlux 上手系列课程：快速入门》
-        JDK8Lambda::check;这种写法仅支持一个参数
+        JDK8Lambda::check;这种写法仅支持一个参数;
+
+        函数式编程就像使用Excel表格计算最大值、最小值、总和一样的道理,我们不关心是怎么实现的，我们仅想要什么样的结果即可!
     </description>
 	<properties>
 		<java.version>1.8</java.version>
