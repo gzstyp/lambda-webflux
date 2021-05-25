@@ -229,7 +229,7 @@ public final class ToolClient{
     }
 
     /**
-     * 基于函数接口调用
+     * 基于函数接口调用,todo 仅适用于‘函数接口‘调用,不适用注解
      * @param json 是json格式字符串
      * @作者 田应平
      * @QQ 444141300
@@ -240,7 +240,7 @@ public final class ToolClient{
     }
 
     /**
-     * 不推荐使用
+     * 不推荐使用,todo 仅适用于‘函数接口‘调用,不适用注解
      * @param json 是经过 Mono.just(json) 处理后的字符串
      * @作者 田应平
      * @QQ 444141300
