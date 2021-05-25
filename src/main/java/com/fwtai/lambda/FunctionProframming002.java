@@ -24,6 +24,12 @@ public class FunctionProframming002{
         consumer.accept(5);
 
         IntStream.of(10,58,26,-21,22,100);
+
+        //todo 方法的引用定义介绍,当函数执行体里只有一个函数调用且该调用函数的参数和左边传进来的参数是一样时可以简写!!!可以写成方法引用的方式
+        final IntConsumer c = (i) -> System.out.println(i);//todo 箭头的左边是函数的参数,右边是函数的执行体;当且仅当
+        c.accept(5);
+        // todo 方法的引用定义示例,当函数执行体里只有一个函数调用且该调用函数的参数和左边传进来的参数是一样时可以简写!!!可以写成方法引用的方式
+        final IntConsumer cr = System.out::println;//todo 它是静态方法的引用
     }
 
     protected static void excel(){
