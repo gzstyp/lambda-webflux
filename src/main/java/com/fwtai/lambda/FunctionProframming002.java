@@ -1,5 +1,7 @@
 package com.fwtai.lambda;
 
+import java.util.stream.IntStream;
+
 /**
  * 函数式编程就像使用Excel表格计算最大值、最小值、总和一样的道理,我们不关心是怎么实现的，我们仅想要什么样的结果即可
  * @param 
@@ -9,7 +11,17 @@ package com.fwtai.lambda;
 */
 public class FunctionProframming002{
 
-    public static void main(String[] args){
+    public static void main(final String[] args){
+        final int[] nums = {10,58,26,-21,22,100};
+        final IntStream stream = IntStream.of(nums).parallel();// 方法parallel()并行,多核CPU的优势了
+        //long count = stream.count();//todo 仅能调用一次,否则报错 stream has already been operated upon or closed
+        //int max = stream.max().getAsInt();
+        int min = stream.min().getAsInt();
+        int sum = stream.sum();
 
+        //System.out.println("count->"+count);//6
+        //System.out.println("max->"+max);//100
+        //System.out.println("min->"+min);//-21
+        System.out.println("sum->"+sum);//195
     }
 }
