@@ -19,7 +19,7 @@ import java.util.Map;
  * @QQ号码 444141300
  * @Email service@dwlai.com
  * @官网 http://www.fwtai.com
-*/
+ */
 public final class ToolClient{
 
     private final static String KEY_CODE = "code";
@@ -234,7 +234,7 @@ public final class ToolClient{
      * @作者 田应平
      * @QQ 444141300
      * @创建时间 2021/2/7 17:33
-    */
+     */
     public static Mono<ServerResponse> responseJson(final String json){
         return ServerResponse.ok().contentType(new MediaType("text","html",StandardCharsets.UTF_8)).header("Cache-Control","no-cache").bodyValue(json);
     }
@@ -245,7 +245,7 @@ public final class ToolClient{
      * @作者 田应平
      * @QQ 444141300
      * @创建时间 2021/2/7 17:34
-    */
+     */
     protected static Mono<ServerResponse> responseJson(final Mono<String> json){
         return ServerResponse.ok().contentType(new MediaType("text","html",StandardCharsets.UTF_8)).body(json,String.class);
     }
@@ -256,7 +256,7 @@ public final class ToolClient{
      * @作者 田应平
      * @QQ 444141300
      * @创建时间 2021/2/7 17:29
-    */
+     */
     public static Mono<String> responseAnnotatedMsg(final String msg){
         if(msg == null || msg.isEmpty()){
             return Mono.justOrEmpty(json201());
@@ -270,7 +270,7 @@ public final class ToolClient{
      * @作者 田应平
      * @QQ 444141300
      * @创建时间 2021/2/7 17:30
-    */
+     */
     public static Mono<String> responseAnnotatedJson(final String json){
         return Mono.justOrEmpty(json);
     }

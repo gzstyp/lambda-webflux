@@ -6,6 +6,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.TreeSet;
 import java.util.function.Consumer;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 /**
@@ -211,6 +212,13 @@ public final class Lambda{
     //自定义一个函数式接口并使用演示
     private static Integer operation(final Integer number,final NumberFunction function){
         return function.getValue(number);
+    }
+
+    private static String opeValue(final String value){
+        Function<String,String> check = (v)->{
+            return (v == null || v.length() <=0) ? "{\"code\":199,\"msg\":\"请求参数有误\"}" : null;
+        };
+        return check.apply(value);
     }
 
     //调用函数式接口方法
