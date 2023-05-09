@@ -6,6 +6,13 @@ public interface HanderPage {}
 
 /*
 
+@FunctionalInterface
+public interface Select<E> {
+    List<E> getSelect();
+}
+
+下面是实战
+
 //定义分页的实体
 public final class PageInfo<T>{
 
