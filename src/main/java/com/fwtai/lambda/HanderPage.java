@@ -38,7 +38,7 @@ public interface HanderPage<T> {
 }
 
 @Repository层处理
-public PageInfo<HashMap<String,Object>> getPageInfo(final HanderPage<HashMap<String,Object>> hander){
+public <T> PageInfo<T> getPageInfo(final HanderPage<T> hander){
   return hander.getData();
 }
 
