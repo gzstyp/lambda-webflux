@@ -1,5 +1,7 @@
 package com.fwtai.lambda;
 
+public interface HanderPage {}
+
 //分页处理的示例代码
 
 /*
