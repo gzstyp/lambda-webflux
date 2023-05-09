@@ -17,7 +17,7 @@ public interface Select<E> {
   List<E> getSelect();
 }
 
-下面是实战
+下面是实战,参考项目 wine-backend
 
 //①定义函数式接口
 @FunctionalInterface
@@ -51,13 +51,13 @@ public final class PageInfo<T>{
 }
 
 ③@Repository层处理
-public <T> PageInfo<T> getPageInfo(final HanderPage<T> hander){
+public <T> PageInfo<T> getPageTotal(final HanderPage<T> hander){
   return hander.getData();
 }
 
 ④dao层处理
 public PageInfo<HashMap<String,Object>> getUsers(final Long kid){
-  return dao.getPageInfo(() -> {
+  return dao.getPageTotal(() -> {
     final Integer total = dao.queryForInteger("api_buy.getUsersTotal",kid);
     final List<HashMap<String,Object>> listData = dao.queryForListHashMap("api_buy.getUsersData",kid);
     final PageInfo<HashMap<String,Object>> pageInfo = new PageInfo<>();
