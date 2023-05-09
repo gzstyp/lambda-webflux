@@ -8,40 +8,40 @@ package com.fwtai.lambda;
  * @QQ号码 444141300
  * @Email service@dwlai.com
  * @官网 http://www.fwtai.com
-*/
+ */
 public final class Example{
 
-    @FunctionalInterface
-    interface Persion{
-        public void say();//抽象方法
-        default void fun(){//默认方法
-            System.out.println("我是lambda函数接口编程的默认方法,默认方法可以有多个");
-        }
+  @FunctionalInterface
+  interface Persion{
+    public void say();//抽象方法
+    default void fun(){//默认方法
+      System.out.println("我是lambda函数接口编程的默认方法,默认方法可以有多个");
     }
+  }
 
-    public static void main(final String[] args){
-        //常规的写法
-        final Persion jerry = new Persion(){
-            @Override
-            public void say(){
-                System.out.println("常规的写法");
-            }
-        };
+  public static void main(final String[] args){
+    //常规的写法
+    final Persion jerry = new Persion(){
+      @Override
+      public void say(){
+        System.out.println("常规的写法");
+      }
+    };
 
-        //lambda的写法1,lambda是匿名函数的变体???
-        final Persion tom = ()->{
-            System.out.println("lambda的写法1");
-        };
+    //lambda的写法1,lambda是匿名函数的变体???
+    final Persion tom = ()->{
+      System.out.println("lambda的写法1");
+    };
 
-        //lambda的写法2,当且仅当只有一行方法体时可以省略{}
-        final Persion mary = () -> System.out.println("lambda的写法2");
+    //lambda的写法2,当且仅当只有一行方法体时可以省略{}
+    final Persion mary = () -> System.out.println("lambda的写法2");
 
-        jerry.say();
+    jerry.say();
 
-        tom.say();
+    tom.say();
 
-        tom.fun();
+    tom.fun();
 
-        mary.say();
-    }
+    mary.say();
+  }
 }

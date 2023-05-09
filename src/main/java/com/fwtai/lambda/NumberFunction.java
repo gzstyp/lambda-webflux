@@ -13,21 +13,21 @@ package com.fwtai.lambda;
 @FunctionalInterface
 public interface NumberFunction{
 
-    Integer getValue(final Integer number);
-    // todo 此处的 default 是叫默认是实现方法
-    default Integer value1(){
-        return 1;
-    }
+  Integer getValue(final Integer number);
+  // todo 此处的 default 是叫默认是实现方法
+  default Integer value1(){
+    return 1;
+  }
 
-    default Integer value2(){
-        return 1;
-    }
+  default Integer value2(){
+    return 1;
+  }
 
-    static Integer fun1(){
-        return 2;
-    }
+  static Integer fun1(){
+    return 2;
+  }
 
-    static Integer fun2(){
-        return 2;
-    }
+  static Integer fun2(){
+    return 2;
+  }
 }

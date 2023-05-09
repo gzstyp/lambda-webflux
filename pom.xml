@@ -1,76 +1,76 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<parent>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.6.8</version>
-		<relativePath/>
-    </parent>
-	<groupId>com.fwtai</groupId>
-	<artifactId>lambda-webflux</artifactId>
-	<version>v1.0.0</version>
-	<description>
-        jdk8学习lambda表达式;
-        基于注解实现 webflux 的方式;
-        基于函数接口 FunctionalInterface 实现 webflux 的方式;
-        不管基于‘基于注解实现’或‘基于函数接口’都已解决在IE8版本请求时不出现下载的bug;
-        一般情况下,若有2个参数时是既有输入参数又有返回结果，即输入是T，返回的是R,Function《T,R》
-        总结:在接收请求参数时,简单类型用注解方式接口,复杂的可以使用基于函数接口来处理接收操作;
-        《SpringBoot 5.0-WebFlux 上手系列课程：快速入门》
-        JDK8Lambda::check;这种写法仅支持一个参数;
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <version>2.7.11</version>
+    <relativePath/>
+  </parent>
+  <groupId>com.fwtai</groupId>
+  <artifactId>lambda-webflux</artifactId>
+  <version>v1.0.0</version>
+  <description>
+    jdk8学习lambda表达式;
+    基于注解实现 webflux 的方式;
+    基于函数接口 FunctionalInterface 实现 webflux 的方式;
+    不管基于‘基于注解实现’或‘基于函数接口’都已解决在IE8版本请求时不出现下载的bug;
+    一般情况下,若有2个参数时是既有输入参数又有返回结果，即输入是T，返回的是R,Function《T,R》
+    总结:在接收请求参数时,简单类型用注解方式接口,复杂的可以使用基于函数接口来处理接收操作;
+    《SpringBoot 5.0-WebFlux 上手系列课程：快速入门》
+    JDK8Lambda::check;这种写法仅支持一个参数;
 
-        函数式编程就像使用Excel表格计算最大值、最小值、总和一样的道理,我们不关心是怎么实现的，我们仅想要什么样的结果即可!
-        注意命令式编程和函数式编程,jdk1.8之前的都是命令式编程;jdk1.8才有函数式编程;
-        函数接口方法里的 default 修饰的方法应该叫 默认是实现方法;
-        方法的引用定义示例,当函数执行体里只有一个函数调用且该调用函数的参数和左边传进来的参数是一样时可以简写!!!可以写成方法引用的方式
-        实现抽象方法的参数列表，必须与方法引用方法的参数列表保持一致
+    函数式编程就像使用Excel表格计算最大值、最小值、总和一样的道理,我们不关心是怎么实现的，我们仅想要什么样的结果即可!
+    注意命令式编程和函数式编程,jdk1.8之前的都是命令式编程;jdk1.8才有函数式编程;
+    函数接口方法里的 default 修饰的方法应该叫 默认是实现方法;
+    方法的引用定义示例,当函数执行体里只有一个函数调用且该调用函数的参数和左边传进来的参数是一样时可以简写!!!可以写成方法引用的方式
+    实现抽象方法的参数列表，必须与方法引用方法的参数列表保持一致
 
-        【spring-webmvc + Servlet + Tomcat】命令式的、同步阻塞的
-        【spring-webflux + Reactor + Netty】响应式的、异步非阻塞的
+    【spring-webmvc + Servlet + Tomcat】命令式的、同步阻塞的
+    【spring-webflux + Reactor + Netty】响应式的、异步非阻塞的
 
-        flatMap应用场景：A对象里有个属性，假设是B属性，这个属性是个集合，得到A对象里的B属性的列表
-    </description>
-	<properties>
-		<java.version>1.8</java.version>
-	</properties>
-	<dependencies>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-webflux</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <optional>true</optional>
-        </dependency>
-        <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>fastjson</artifactId>
-            <version>1.2.78</version>
-        </dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
-		</dependency>
-	</dependencies>
+    flatMap应用场景：A对象里有个属性，假设是B属性，这个属性是个集合，得到A对象里的B属性的列表
+  </description>
+  <properties>
+    <java.version>1.8</java.version>
+  </properties>
+  <dependencies>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-webflux</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <optional>true</optional>
+    </dependency>
+    <dependency>
+      <groupId>com.alibaba</groupId>
+      <artifactId>fastjson</artifactId>
+      <version>1.2.83</version>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-test</artifactId>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
 
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
-                </configuration>
-            </plugin>
-        </plugins>
-	</build>
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-maven-plugin</artifactId>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <source>1.8</source>
+          <target>1.8</target>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
 </project>

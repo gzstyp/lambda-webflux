@@ -9,15 +9,15 @@ package com.fwtai.bean;
 */
 public final class Dog{
 
-    private String name = "哮天犬";
+  private String name = "哮天犬";
 
-    //todo 狗叫,静态方法,输入的是Dog是否。输出是void空的,它也是消费者
-    public static void bark(final Dog dog){
-        System.out.println(dog + "叫了");
-    }
+  //todo 狗叫,静态方法,输入的是Dog是否。输出是void空的,它也是消费者
+  public static void bark(final Dog dog){
+    System.out.println(dog + "叫了");
+  }
 
-    @Override
-    public String toString(){
-        return this.name;
-    }
+  @Override
+  public String toString(){
+    return this.name;
+  }
 }
