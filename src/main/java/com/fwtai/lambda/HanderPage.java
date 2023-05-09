@@ -8,7 +8,7 @@ public interface HanderPage {}
 
 @FunctionalInterface
 public interface Select<E> {
-    List<E> getSelect();
+  List<E> getSelect();
 }
 
 下面是实战
