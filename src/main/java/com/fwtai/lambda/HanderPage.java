@@ -1,6 +1,12 @@
 package com.fwtai.lambda;
 
-public interface HanderPage {}
+import java.util.List;
+
+//函数式接口编程
+@FunctionalInterface
+public interface HanderPage<T> {
+  List<T> getSelect();
+}
 
 //分页处理的示例代码
 
@@ -13,7 +19,13 @@ public interface Select<E> {
 
 下面是实战
 
-//定义分页的实体
+//①定义函数式接口
+@FunctionalInterface
+public interface HanderPage<T> {
+  PageInfo<T> getData();
+}
+
+//②定义分页的实体
 public final class PageInfo<T>{
 
   private Integer total;
@@ -38,18 +50,12 @@ public final class PageInfo<T>{
 
 }
 
-//定义函数式接口
-@FunctionalInterface
-public interface HanderPage<T> {
-  PageInfo<T> getData();
-}
-
-@Repository层处理
+③@Repository层处理
 public <T> PageInfo<T> getPageInfo(final HanderPage<T> hander){
   return hander.getData();
 }
 
-dao层处理
+④dao层处理
 public PageInfo<HashMap<String,Object>> getUsers(final Long kid){
   return dao.getPageInfo(() -> {
     final Integer total = dao.queryForInteger("api_buy.getUsersTotal",kid);
@@ -61,7 +67,7 @@ public PageInfo<HashMap<String,Object>> getUsers(final Long kid){
   });
 }
 
-xml查询
+⑤xml查询
 <select id="getUsersTotal" resultType="Integer" parameterType="Long">
   SELECT COUNT(1) as total FROM sys_user
 </select>
@@ -70,7 +76,7 @@ xml查询
   SELECT kid,user_name,type,add_date,times FROM sys_user LIMIT 0,5
 </select>
 
-service层处理
+⑥service层处理
 public String getUsers(final Long kid){
   final PageInfo<HashMap<String,Object>> pageInfo = apiBuyDao.getUsers(kid);
   return ToolClient.jsonPage(pageInfo.getData(),pageInfo.getTotal());
